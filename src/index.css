@@ -1,217 +1,173 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 40 33% 98%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 142 48% 33%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 205 52% 60%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 43 100% 52%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 142 48% 33%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 142 48% 33%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 142 30% 25%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 143 39% 45%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 142 25% 38%;
-    --sidebar-ring: 142 48% 33%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 142 48% 33%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 205 52% 50%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 43 100% 52%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 142 48% 33%;
-
-    --sidebar-background: 142 38% 20%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 142 48% 33%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 143 30% 25%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 142 25% 15%;
-    --sidebar-ring: 142 48% 33%;
-  }
+:root {
+  --eco-primary: #22c55e;
+  --eco-primary-dark: #16a34a;
+  --eco-secondary: #3b82f6;
+  --eco-accent: #f59e0b;
+  --eco-dark: #111827;
+  --eco-light: #f3f4f6;
+  --eco-background: #0f172a;
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
-    @apply bg-gradient-to-br from-[#1a1f2c] to-[#2C1F4A] text-foreground min-h-screen;
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    @apply bg-eco-background text-eco-light;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
 }
 
 @layer components {
   .eco-card {
-    @apply bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300;
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-glow;
   }
   
   .eco-button {
-    @apply bg-eco-primary text-white py-2 px-4 rounded-md hover:bg-eco-primary/90 transition-colors duration-200;
-  }
-  
-  .eco-button-secondary {
-    @apply bg-eco-secondary text-white py-2 px-4 rounded-md hover:bg-eco-secondary/90 transition-colors duration-200;
-  }
-  
-  .eco-button-accent {
-    @apply bg-eco-accent text-eco-dark py-2 px-4 rounded-md hover:bg-eco-accent/90 transition-colors duration-200;
+    @apply bg-eco-primary hover:bg-eco-primary-dark text-white font-semibold py-2 px-4 rounded-md 
+    transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg
+    focus:outline-none focus:ring-2 focus:ring-eco-primary focus:ring-opacity-50;
   }
   
   .eco-input {
-    @apply border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-eco-primary/50 transition-all duration-200;
+    @apply bg-white/5 border border-white/10 text-white rounded-md px-4 py-2
+    focus:ring-2 focus:ring-eco-primary focus:ring-opacity-50 focus:border-eco-primary
+    focus:outline-none transition-all duration-300;
   }
   
   .eco-label {
-    @apply text-sm font-medium text-gray-700 mb-1 block;
-  }
-  
-  .eco-table {
-    @apply min-w-full divide-y divide-gray-200;
-  }
-  
-  .eco-table-header {
-    @apply bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider py-3 px-4;
-  }
-  
-  .eco-table-cell {
-    @apply py-3 px-4 whitespace-nowrap text-sm text-gray-500;
-  }
-  
-  .status-registered {
-    @apply bg-blue-100 text-blue-800 text-xs px-2.5 py-0.5 rounded-full;
-  }
-  
-  .status-in-transit {
-    @apply bg-yellow-100 text-yellow-800 text-xs px-2.5 py-0.5 rounded-full;
-  }
-  
-  .status-verified {
-    @apply bg-green-100 text-green-800 text-xs px-2.5 py-0.5 rounded-full;
-  }
-  
-  .status-approved {
-    @apply bg-purple-100 text-purple-800 text-xs px-2.5 py-0.5 rounded-full;
-  }
-  
-  .status-rejected {
-    @apply bg-red-100 text-red-800 text-xs px-2.5 py-0.5 rounded-full;
-  }
-
-  .web3-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-white/20;
-  }
-
-  .web3-button {
-    @apply bg-gradient-to-r from-eco-primary to-eco-secondary text-white py-2 px-4 rounded-md 
-           hover:opacity-90 transition-all duration-300 
-           hover:shadow-[0_0_15px_rgba(44,125,65,0.5)] 
-           active:transform active:scale-95;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .glassmorphism {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)];
-  }
-
-  .bg-grid {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
+    @apply text-eco-light font-medium mb-1 block;
   }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
+/* Animations */
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0px) translateX(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-10px) translateX(5px);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) translateX(0px);
   }
 }
 
-@keyframes pulse {
+@keyframes pulse-slow {
   0%, 100% {
     opacity: 1;
   }
   50% {
     opacity: 0.7;
   }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px 2px rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(34, 197, 94, 0.6);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bg-pan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .bg-gradient-animate {
+    background: linear-gradient(
+      -45deg,
+      var(--eco-primary-dark),
+      var(--eco-primary),
+      var(--eco-secondary),
+      var(--eco-accent)
+    );
+    background-size: 400% 400%;
+    animation: bg-pan 15s ease infinite;
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 15px 5px rgba(34, 197, 94, 0.15);
+  }
+}
+
+/* Web3 specific styles */
+.glassmorphism {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
+}
+
+.network-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: var(--eco-primary);
+  border-radius: 50%;
+}
+
+.web3-card {
+  @apply glassmorphism p-6 transition-all duration-500;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.web3-card:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
+}
+
+.web3-button {
+  @apply relative overflow-hidden bg-eco-primary text-white font-bold py-2 px-4 rounded-lg;
+}
+
+.web3-button::before {
+  content: '';
+  @apply absolute inset-0 bg-white/20 transform scale-x-0 origin-left transition-transform duration-300;
+}
+
+.web3-button:hover::before {
+  @apply scale-x-100;
 }

@@ -11,20 +11,28 @@ import TransporterDashboard from "./pages/TransporterDashboard";
 import PlantDashboard from "./pages/PlantDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
 
 // Protected route component
 const ProtectedRoute = ({ children, allowedRoles }: { children: JSX.Element, allowedRoles?: string[] }) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, isLoading, getUserRole } = useAuth();
+  
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-pulse-slow text-eco-primary">Loading...</div>
+    </div>;
+  }
   
   if (!isAuthenticated) {
     return <Navigate to="/" replace />;
   }
   
-  if (allowedRoles && user && !allowedRoles.includes(user.role)) {
+  const userRole = getUserRole();
+  if (allowedRoles && !allowedRoles.includes(userRole)) {
     // Redirect to the user's correct dashboard
-    switch(user.role) {
+    switch(userRole) {
       case 'farmer':
         return <Navigate to="/farmer" replace />;
       case 'transporter':
@@ -49,7 +57,7 @@ const App = () => (
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Index />} />
             <Route 
               path="/farmer" 
               element={
