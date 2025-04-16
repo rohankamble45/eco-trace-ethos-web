@@ -24,7 +24,7 @@ const FarmerDashboard: React.FC = () => {
   // Update getMockUserId to use email
   const getMockUserId = () => {
     if (!user?.email) return '';
-    const mockUser = createUser(user.email, 'farmer');
+    const mockUser = createUser(user.email, 'farmer' as UserRole);
     return mockUser.id;
   };
   

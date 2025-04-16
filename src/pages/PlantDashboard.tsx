@@ -27,7 +27,7 @@ const PlantDashboard: React.FC = () => {
   // Update getMockUserId to use email
   const getMockUserId = () => {
     if (!user?.email) return '';
-    const mockUser = createUser(user.email, 'plant');
+    const mockUser = createUser(user.email, 'plant' as UserRole);
     return mockUser.id;
   };
   

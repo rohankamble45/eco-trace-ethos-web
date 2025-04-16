@@ -68,12 +68,12 @@ const MaterialRegistrationForm: React.FC<MaterialRegistrationFormProps> = ({ onS
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="materialType" className="eco-label">
+        <label htmlFor="materialType" className="eco-label text-black">
           Material Type
         </label>
         <select
           id="materialType"
-          className={`eco-input w-full ${errors.materialType ? 'border-red-500' : ''}`}
+          className={`eco-input w-full text-black ${errors.materialType ? 'border-red-500' : ''}`}
           value={materialType}
           onChange={(e) => setMaterialType(e.target.value)}
         >
@@ -90,13 +90,13 @@ const MaterialRegistrationForm: React.FC<MaterialRegistrationFormProps> = ({ onS
       </div>
 
       <div>
-        <label htmlFor="weight" className="eco-label">
+        <label htmlFor="weight" className="eco-label text-black">
           Weight (kg)
         </label>
         <input
           type="number"
           id="weight"
-          className={`eco-input w-full ${errors.weight ? 'border-red-500' : ''}`}
+          className={`eco-input w-full text-black ${errors.weight ? 'border-red-500' : ''}`}
           placeholder="Enter weight in kg"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
@@ -109,13 +109,13 @@ const MaterialRegistrationForm: React.FC<MaterialRegistrationFormProps> = ({ onS
       </div>
 
       <div>
-        <label htmlFor="location" className="eco-label">
+        <label htmlFor="location" className="eco-label text-black">
           Location
         </label>
         <input
           type="text"
           id="location"
-          className={`eco-input w-full ${errors.location ? 'border-red-500' : ''}`}
+          className={`eco-input w-full text-black ${errors.location ? 'border-red-500' : ''}`}
           placeholder="Enter location (e.g., Latitude, Longitude or Address)"
           value={location}
           onChange={(e) => setLocation(e.target.value)}

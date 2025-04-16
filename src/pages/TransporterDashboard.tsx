@@ -27,7 +27,7 @@ const TransporterDashboard: React.FC = () => {
   // Update getMockUserId to use email
   const getMockUserId = () => {
     if (!user?.email) return '';
-    const mockUser = createUser(user.email, 'transporter');
+    const mockUser = createUser(user.email, 'transporter' as UserRole);
     return mockUser.id;
   };
   
