@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -54,16 +53,15 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				eco: {
-					primary: '#2C7D41',    // Deep green
-					secondary: '#5CA0D3',  // Soft blue
-					accent: '#FFC107',     // Amber
-					background: '#FCFAF7', // Light cream
-					dark: '#333333',       // Dark charcoal
-					light: '#F5F5F5',      // Light gray
-					success: '#4CAF50',    // Success green
-					warning: '#FF9800',    // Warning orange
-					danger: '#F44336',     // Danger red
-					info: '#2196F3',       // Info blue
+					primary: {
+						DEFAULT: '#22c55e',
+						dark: '#16a34a'
+					},
+					secondary: '#3b82f6',
+					accent: '#f59e0b',
+					dark: '#111827',
+					light: '#f3f4f6',
+					background: '#0f172a'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

@@ -1,4 +1,3 @@
-
 // Mock data service
 // This simulates the data that would come from a backend API
 
@@ -31,7 +30,7 @@ export interface CarbonCredit {
 
 export interface User {
   id: string;
-  username: string;
+  username: string;  // Add this line
   role: 'farmer' | 'transporter' | 'plant' | 'admin';
 }
 
