@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
@@ -9,7 +10,8 @@ import {
   getMaterials, 
   formatMaterialType,
   Material, 
-  createUser
+  createUser,
+  UserRole
 } from '../services/mockDataService';
 import { Clock } from 'lucide-react';
 

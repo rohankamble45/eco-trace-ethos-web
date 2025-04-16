@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
@@ -10,7 +11,8 @@ import {
   formatMaterialType,
   Material, 
   CarbonCredit,
-  createUser
+  createUser,
+  UserRole
 } from '../services/mockDataService';
 import { 
   BarChart, 
