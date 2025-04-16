@@ -259,7 +259,7 @@ const AdminDashboard: React.FC = () => {
                     <XAxis dataKey="name" angle={-45} textAnchor="end" height={70} />
                     <YAxis />
                     <Tooltip />
-                    <Bar dataKey="value" nameKey="name" />
+                    <Bar dataKey="value" />
                   </RechartsBarChart>
                 </ResponsiveContainer>
               </div>
