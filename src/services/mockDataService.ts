@@ -28,10 +28,12 @@ export interface CarbonCredit {
   updatedAt: Date;
 }
 
+export type UserRole = 'farmer' | 'transporter' | 'plant' | 'admin';
+
 export interface User {
   id: string;
-  username: string;  // Add this line
-  role: 'farmer' | 'transporter' | 'plant' | 'admin';
+  email: string;  // Changed from username to match Supabase auth schema
+  role: UserRole;
 }
 
 // In-memory storage
@@ -50,8 +52,8 @@ export const formatMaterialType = (type: string): string => {
 };
 
 // Mock user creation/login
-export const createUser = (username: string, role: 'farmer' | 'transporter' | 'plant' | 'admin'): User => {
-  const existingUser = users.find(u => u.username === username && u.role === role);
+export const createUser = (email: string, role: UserRole): User => {
+  const existingUser = users.find(u => u.email === email && u.role === role);
   
   if (existingUser) {
     return existingUser;
@@ -59,7 +61,7 @@ export const createUser = (username: string, role: 'farmer' | 'transporter' | 'p
   
   const newUser = {
     id: generateId(),
-    username,
+    email,
     role
   };
   
@@ -284,12 +286,12 @@ export const initializeMockData = () => {
   carbonCredits = [];
   users = [];
   
-  // Create users
-  const farmer1 = createUser('farmer1', 'farmer');
-  const farmer2 = createUser('farmer2', 'farmer');
-  const transporter1 = createUser('transporter1', 'transporter');
-  const plant1 = createUser('plant1', 'plant');
-  const admin1 = createUser('admin1', 'admin');
+  // Create users with email addresses
+  const farmer1 = createUser('farmer1@example.com', 'farmer');
+  const farmer2 = createUser('farmer2@example.com', 'farmer');
+  const transporter1 = createUser('transporter1@example.com', 'transporter');
+  const plant1 = createUser('plant1@example.com', 'plant');
+  const admin1 = createUser('admin1@example.com', 'admin');
   
   // Create materials
   const material1 = registerMaterial('corn_stover', 1000, '41.8781° N, 87.6298° W', farmer1.id);

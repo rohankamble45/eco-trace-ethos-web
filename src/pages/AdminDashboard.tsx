@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
@@ -42,10 +41,10 @@ const AdminDashboard: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  // Get mock user ID
+  // Update getMockUserId to use email
   const getMockUserId = () => {
-    if (!user) return '';
-    const mockUser = createUser(user.username, user.role);
+    if (!user?.email) return '';
+    const mockUser = createUser(user.email, 'admin');
     return mockUser.id;
   };
   
